@@ -20,9 +20,7 @@
         padding-bottom: 10px;
         margin-bottom: 1em;
     }
-    p {
-        font-size: 16px;
-    }
+
  a {
      color: #337ab7;
  }
@@ -31,11 +29,30 @@
         line-height: 25px;
         margin: 5em 0em;
         font-family: 'Lato', sans-serif; 
+        font-size: 16px;
+        color: #333;
+    }
+    .controls {
+        display:flex;
+        gap: 1em;
+        flex-wrap: wrap;
+    }
+    .animated {
+        transition: all 3s ease-in-out;
     }
 </style>
 </head>
 <body>
-<main class="main">
+<main id="main" class="main">
+    <div class="controls">
+    <button id="original">Original</button>
+    <button id="optimal">Optimal</button>
+    <form>
+        <label for="animation-cb">Animation</label>
+        <input type="checkbox" name="animation" id="animation-cb" onclick="isChecked()">
+    </form>
+    </div>
+
 <h1>EXEMPTION FOR LARGE GATHERINGS</h1>
 <p>In accordance with the Public Health (COVID-19 Emergency Powers) (Phased Re-Opening) Regulations 2021, the Minister of Youth, Culture and Sport may grant exemptions permitting a group of more than 100 persons to assemble, subject to any conditions imposed by the Minister to ensure COVID-19 public health measures and protocols are implemented. Approvals are subject to all public health laws and regulations in effect at the time of the event (e.g. curfew, table distancing, etc.)</p>
 <p>The maximum number permitted for events is 50% of a venue's normal capacity. This allows for approximately 6 foot distancing.</p>
@@ -50,6 +67,7 @@
   <p>For queries <a href="https://www.gov.bm/contact/53171" target="_blank"><strong>email</strong></a> or call 294-9146</p>
   <p>Commercial boats do not need an exemption but are limited to the number of passengers specified in the licence issued under the Marine Board (Island Boats) Regulations 1965, provided appropriate physical distancing is maintained an public health guidance is followed at all times.</p>
   <p>Applications for Trusted Establishment status have additional specific guidance and requirements. Please follow these <a href="https://forms.gov.bm/Portals/0/docs/Trusted-Establishment-Guidance-Notes-V1.pdf?ver=pksykFsVQlyisH6Gkj1Btg%3d%3d" target="_blank">Guidance Notes</a> and upload the required <a href="https://forms.gov.bm/Portals/0/docs/Capacity-Chart-v2-210820.xlsx?ver=lbEVqnqNOkx3BUu74TNUrw%3d%3d" target="_blank">Capacity Chart</a> fully completed. </p>
+  <script src="./script.js"></script>
 </main>
 </body>
 </html>
