@@ -27,15 +27,15 @@ function changeToOriginal() {
 }
 
 function changeToOptimal() {
-  main.style.maxWidth = "40em";
+  main.style.maxWidth = "35em";
   main.style.fontSize = "16px";
   main.style.lineHeight = "25px";
   originalBtn.classList.remove("selected");
   originalBtn.classList.add("unselected");
   optimalBtn.classList.remove("unselected");
   optimalBtn.classList.add("selected");
-  avgChar.innerHTML = "93 characters";
-  maxWidth.innerHTML = "640px / 40em";
+  avgChar.innerHTML = "80 characters";
+  maxWidth.innerHTML = "560px / 35em";
   fontSize.innerHTML = "16px";
 }
 
