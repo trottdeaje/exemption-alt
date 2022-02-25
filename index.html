@@ -1,73 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimal line length</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-<style>
-    body {
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The purpose of this demo is to show the difference between an
+    optimal and a not optimal line length. The button labeled Original
+    uses the style format from the original form"
+    />
+    <title>Line length Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
         display: flex;
         justify-content: center;
-    }
-    h1 {
+      }
+
+      h1 {
         font-weight: 400;
         font-size: 25px;
         border-bottom: 2px solid #dbdbdb;
         padding-bottom: 10px;
         margin-bottom: 1em;
-    }
+      }
 
- a {
-     color: #337ab7;
- }
-    .main {
-        max-width: 38em;
-        line-height: 25px;
-        margin: 5em 0em;
-        font-family: 'Lato', sans-serif; 
-        font-size: 16px;
+      a {
+        color: #337ab7;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .main {
+        max-width: 81em;
+        line-height: 24px;
+        margin: 2em 0em;
+        font-family: "Lato", sans-serif;
+        font-size: 14px;
         color: #333;
-    }
-    .controls {
-        display:flex;
+      }
+      form {
+        display: flex;
+        align-items: center;
+      }
+
+      .controls {
+        display: flex;
         gap: 1em;
         flex-wrap: wrap;
-    }
-    .animated {
-        transition: all 3s ease-in-out;
-    }
-</style>
-</head>
-<body>
-<main id="main" class="main">
-    <div class="controls">
-    <button id="original">Original</button>
-    <button id="optimal">Optimal</button>
-    <form>
-        <label for="animation-cb">Animation</label>
-        <input type="checkbox" name="animation" id="animation-cb" onclick="isChecked()">
-    </form>
-    </div>
+        align-items: center;
+      }
 
-<h1>EXEMPTION FOR LARGE GATHERINGS</h1>
-<p>In accordance with the Public Health (COVID-19 Emergency Powers) (Phased Re-Opening) Regulations 2021, the Minister of Youth, Culture and Sport may grant exemptions permitting a group of more than 100 persons to assemble, subject to any conditions imposed by the Minister to ensure COVID-19 public health measures and protocols are implemented. Approvals are subject to all public health laws and regulations in effect at the time of the event (e.g. curfew, table distancing, etc.)</p>
-<p>The maximum number permitted for events is 50% of a venue's normal capacity. This allows for approximately 6 foot distancing.</p>
-<p>Applications for a Large Group Exemption must be submitted through this online form. The process is guided by the <a href="https://www.gov.bm/large-group-exemption-process-and-guidance" target="_blank">Large Group Exemption Process and Guidance.</a></p>
-<p>Event Organizers should submit applications 15 working days (3 weeks) before an event. Complex events (multi-event, multi-date) will take longer to process. A site visit may be required. Incomplete applications cannot be processed. Do not state ‘not applicable’ or ‘N/A’ for any field. All fields apply to all events and all questions must be answered.</p>
-<p>Emergency applications are only considered for funerals, wakes and union meetings. These will be processed in 3 working days from receipt of all required documents, and must meet all criteria and public health measures.</p>
-<p>Please provide all information as incomplete applications cannot be processed. The online application must be completed in one session and takes at least 30 minutes to complete or more. Before you begin your application make sure you have all the information required including:</p>
-<ul>
-    <li>A site map as described below</li>
-    <li>The signed Facility Operator letter confirming knowledge of the Covid-19 Public Health protocols and agreement to comply with those requirements</li>
-  </ul>
-  <p>For queries <a href="https://www.gov.bm/contact/53171" target="_blank"><strong>email</strong></a> or call 294-9146</p>
-  <p>Commercial boats do not need an exemption but are limited to the number of passengers specified in the licence issued under the Marine Board (Island Boats) Regulations 1965, provided appropriate physical distancing is maintained an public health guidance is followed at all times.</p>
-  <p>Applications for Trusted Establishment status have additional specific guidance and requirements. Please follow these <a href="https://forms.gov.bm/Portals/0/docs/Trusted-Establishment-Guidance-Notes-V1.pdf?ver=pksykFsVQlyisH6Gkj1Btg%3d%3d" target="_blank">Guidance Notes</a> and upload the required <a href="https://forms.gov.bm/Portals/0/docs/Capacity-Chart-v2-210820.xlsx?ver=lbEVqnqNOkx3BUu74TNUrw%3d%3d" target="_blank">Capacity Chart</a> fully completed. </p>
-  <script src="./script.js"></script>
-</main>
-</body>
+      .selected {
+        border: 0px;
+        color: white;
+        padding: 0.7em 0.7em;
+        border-radius: 4px;
+        box-shadow: none;
+        background-color: #194a8f;
+        transition: all 0.2s ease-in-out;
+        box-shadow: inset 0px 2px 2px 1px hsla(215, 69%, 23%, 0.6);
+      }
+
+      .unselected {
+        background-color: #1f5aad;
+        box-shadow: 0px 8px 10px -3px hsla(215, 70%, 40%, 0.502);
+        border: 0px;
+        color: white;
+        padding: 0.7em 0.7em;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .animated {
+        transition: all 3s ease-in-out;
+      }
+
+      .info {
+        margin-bottom: 0;
+        background: #dbdbdb80;
+        padding: 1em;
+      }
+
+      .stats {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-bottom: 1.5em;
+        margin-top: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="main" class="main">
+      <div class="controls">
+        <div style="width: 100%">
+          <p style="margin: 0; font-weight: bold; font-size: 1.5em">
+            Line length Demo
+          </p>
+          <p class="info">
+            The purpose of this demo is to show the difference between an
+            optimal and a not optimal line length. The button labeled Original
+            uses the style format from the original form
+            <a href="https://forms.gov.bm/Exemption-for-Large-Gatherings"
+              >forms.gov.bm/Exemption-for-Large-Gatherings</a
+            >
+          </p>
+        </div>
+        <button id="original" class="selected">Original line length</button>
+        <button id="optimal" class="unselected">Optimal line length</button>
+        <form>
+          <label for="animation-cb">Animation</label>
+          <input
+            type="checkbox"
+            name="animation"
+            id="animation-cb"
+            onclick="isChecked()"
+          />
+        </form>
+      </div>
+
+      <div class="stats">
+        <div>
+          Max Characters per line:
+          <span id="avg-char-stat" style="font-weight: bold"
+            >85 characters</span
+          >
+        </div>
+        <div>
+          Font size: <span id="fs-stat" style="font-weight: bold">14px</span>
+        </div>
+        <div>
+          Max width of text:
+          <span id="mw-stat" style="font-weight: bold">1134px / 81em</span>
+        </div>
+      </div>
+      <h1>EXEMPTION FOR LARGE GATHERINGS</h1>
+      <p>
+        In accordance with the Public Health (COVID-19 Emergency Powers) (Phased
+        Re-Opening) Regulations 2021, the Minister of Youth, Culture and Sport
+        may grant exemptions permitting a group of more than 100 persons to
+        assemble, subject to any conditions imposed by the Minister to ensure
+        COVID-19 public health measures and protocols are implemented. Approvals
+        are subject to all public health laws and regulations in effect at the
+        time of the event (e.g. curfew, table distancing, etc.)
+      </p>
+      <p>
+        The maximum number permitted for events is 50% of a venue's normal
+        capacity. This allows for approximately 6 foot distancing.
+      </p>
+      <p>
+        Applications for a Large Group Exemption must be submitted through this
+        online form. The process is guided by the
+        <a
+          href="https://www.gov.bm/large-group-exemption-process-and-guidance"
+          target="_blank"
+          >Large Group Exemption Process and Guidance.</a
+        >
+      </p>
+      <p>
+        Event Organizers should submit applications 15 working days (3 weeks)
+        before an event. Complex events (multi-event, multi-date) will take
+        longer to process. A site visit may be required. Incomplete applications
+        cannot be processed. Do not state ‘not applicable’ or ‘N/A’ for any
+        field. All fields apply to all events and all questions must be
+        answered.
+      </p>
+      <p>
+        Emergency applications are only considered for funerals, wakes and union
+        meetings. These will be processed in 3 working days from receipt of all
+        required documents, and must meet all criteria and public health
+        measures.
+      </p>
+      <p>
+        Please provide all information as incomplete applications cannot be
+        processed. The online application must be completed in one session and
+        takes at least 30 minutes to complete or more. Before you begin your
+        application make sure you have all the information required including:
+      </p>
+      <ul>
+        <li>A site map as described below</li>
+        <li>
+          The signed Facility Operator letter confirming knowledge of the
+          Covid-19 Public Health protocols and agreement to comply with those
+          requirements
+        </li>
+      </ul>
+      <p>
+        For queries
+        <a href="https://www.gov.bm/contact/53171" target="_blank"
+          ><strong>email</strong></a
+        >
+        or call 294-9146
+      </p>
+      <p>
+        Commercial boats do not need an exemption but are limited to the number
+        of passengers specified in the licence issued under the Marine Board
+        (Island Boats) Regulations 1965, provided appropriate physical
+        distancing is maintained an public health guidance is followed at all
+        times.
+      </p>
+      <p>
+        Applications for Trusted Establishment status have additional specific
+        guidance and requirements. Please follow these
+        <a
+          href="https://forms.gov.bm/Portals/0/docs/Trusted-Establishment-Guidance-Notes-V1.pdf?ver=pksykFsVQlyisH6Gkj1Btg%3d%3d"
+          target="_blank"
+          >Guidance Notes</a
+        >
+        and upload the required
+        <a
+          href="https://forms.gov.bm/Portals/0/docs/Capacity-Chart-v2-210820.xlsx?ver=lbEVqnqNOkx3BUu74TNUrw%3d%3d"
+          target="_blank"
+          >Capacity Chart</a
+        >
+        fully completed.
+      </p>
+      <script src="./script.js"></script>
+    </main>
+  </body>
 </html>
