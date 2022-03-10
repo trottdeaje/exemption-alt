@@ -12,8 +12,8 @@ optimalBtn.addEventListener("click", changeToOptimal);
 
 function changeToOriginal() {
   main.style.maxWidth = "81em";
-  main.style.fontSize = "14px";
-  main.style.lineHeight = "24px";
+  main.style.fontSize = "0.875em";
+  main.style.lineHeight = "1.5em";
   document
     .querySelectorAll("p")
     .forEach((e) => (e.style.marginBottom = "10px"));
@@ -28,13 +28,13 @@ function changeToOriginal() {
 
 function changeToOptimal() {
   main.style.maxWidth = "35em";
-  main.style.fontSize = "16px";
-  main.style.lineHeight = "25px";
+  main.style.fontSize = "1em";
+  main.style.lineHeight = "1.5em";
   originalBtn.classList.remove("selected");
   originalBtn.classList.add("unselected");
   optimalBtn.classList.remove("unselected");
   optimalBtn.classList.add("selected");
-  avgChar.innerHTML = "80 characters";
+  avgChar.innerHTML = "78 characters";
   maxWidth.innerHTML = "560px / 35em";
   fontSize.innerHTML = "16px";
 }
